@@ -20,14 +20,14 @@ public class BinarySearch {
 
         while (start < end) {
             int midpoint = (start + end) / 2;
-            System.out.println("midpoint = " + midpoint);
+            //System.out.println("midpoint = " + midpoint);
             if (input[midpoint] == value) {
                 return midpoint;
             }
             else if (input[midpoint] < value) {
                 start = midpoint + 1;
-                System.out.println("new start---- = " +start);
-                System.out.println("new end------ = " +end);
+                //System.out.println("new start---- = " +start);
+                //System.out.println("new end------ = " +end);
             }
             else {
                 end = midpoint;

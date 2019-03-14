@@ -2,15 +2,18 @@ package com.leetcode.array;
 
 public class MoveZeroes {
     public static int[] moveZeroes(int[] nums) {
-        int insertPos = 0;
-        for(int num : nums) {
-            if(num != 0) {
-                nums[insertPos++] = num;
-            }
+        if (nums == null || nums.length == 0) {
+            return new int[]{};
         }
 
-        while(insertPos < nums.length) {
-            nums[insertPos++] = 0;
+        int cur = 0;
+
+        for (int i = 0; i < nums.length; ++i) {
+            if (nums[i] != 0) {
+                int temp = nums[cur];
+                nums[cur++] = nums[i];
+                nums[i] = temp;
+            }
         }
         return nums;
     }

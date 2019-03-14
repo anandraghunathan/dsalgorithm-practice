@@ -16,6 +16,6 @@ public class PalindromeNumber {
     }
 
     public static void main(String[] args) {
-        System.out.println(isPalindrome(0100));
+        System.out.println(isPalindrome(121));
     }
 }
