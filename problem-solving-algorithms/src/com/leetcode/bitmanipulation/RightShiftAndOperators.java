@@ -1,4 +1,4 @@
-package com.leetcode.xor;
+package com.leetcode.bitmanipulation;
 
 public class RightShiftAndOperators {
     public static void main(String[] args) {

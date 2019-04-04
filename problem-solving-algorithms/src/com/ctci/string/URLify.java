@@ -21,7 +21,8 @@ public class URLify {
 
         index = trueInputLength + spaceCount * 2;
 
-        if(trueInputLength < input.length) input[trueInputLength] = '\0';
+        if(trueInputLength < input.length)
+            input[trueInputLength] = '\0';
 
         for(i = trueInputLength - 1; i >= 0; i--) {
             if(input[i] == ' ') {

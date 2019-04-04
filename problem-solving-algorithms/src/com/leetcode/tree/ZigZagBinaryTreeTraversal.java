@@ -4,42 +4,44 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-public class BinaryTreeLevelOrderTraversal {
-    public static List<List<Integer>> levelOrder(TreeNode root) {
-        Queue<TreeNode> queue = new LinkedList<>();
-        List<List<Integer>> wrapList = new LinkedList<>();
+public class ZigZagBinaryTreeTraversal {
+    public static List<List<Integer>> zigzagLevelOrder(TreeNode root) {
+        List<List<Integer>> wrapList = new LinkedList();
 
         if(root == null)
             return wrapList;
 
+        Queue<TreeNode> queue = new LinkedList();
         queue.offer(root);
+
+        boolean normalOrder = false;
+
         while(!queue.isEmpty()) {
             int level = queue.size();
-            List<Integer> subList = new LinkedList<>();
+            LinkedList<Integer> subList = new LinkedList();
+            normalOrder = !normalOrder;
             for(int i = 0; i < level; i++) {
-                if (queue.peek().left != null)
+                if(queue.peek().left != null)
                     queue.offer(queue.peek().left);
-                if (queue.peek().right != null)
+                if(queue.peek().right != null)
                     queue.offer(queue.peek().right);
-                subList.add(queue.poll().val);
+
+                if(normalOrder)
+                    subList.add(queue.poll().val);
+                else
+                    subList.addFirst(queue.poll().val);
             }
             wrapList.add(subList);
         }
         return wrapList;
     }
 
-//          To be output tree
-//              3
-//             / \
-//             9  20
-//               /  \
-//              15   7
     public static void main(String[] args) {
         TreeNode treeNode = new TreeNode(3);
         treeNode.left = new TreeNode(9);
         treeNode.right = new TreeNode(20);
         treeNode.right.left = new TreeNode(15);
         treeNode.right.right = new TreeNode(7);
-        System.out.println("BFS - Top Down - "+levelOrder(treeNode));
+        System.out.println("BFS - Zig Zag - "+zigzagLevelOrder(treeNode));
     }
 }

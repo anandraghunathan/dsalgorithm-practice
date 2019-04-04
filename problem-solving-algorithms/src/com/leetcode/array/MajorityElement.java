@@ -3,10 +3,21 @@ package com.leetcode.array;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ *
+ * Time complexity : O(n)
+ *
+ * Boyer-Moore performs constant work exactly n times, so the algorithm runs in linear time.
+ *
+ * Space complexity : O(1)
+ *
+ * Boyer-Moore allocates only constant additional memory.
+ *
+ */
+
 public class MajorityElement {
 
     /** Boyer Moore Voting Algorithm */
-
     // 7, 7, 5, 7, 5, 1, 5, 7, 5, 5, 7, 7, 7, 7, 7, 7
     public static int majorityElementBMVA(int[] nums) {
         int count = 0;
@@ -22,7 +33,7 @@ public class MajorityElement {
         if(count == 0)
             return -1;
 
-        return candidate;
+        return count > nums.length/2 ? candidate : -1;
     }
 
 
@@ -53,6 +64,6 @@ public class MajorityElement {
     }
 
     public static void main(String[] args) {
-        System.out.println(majorityElementBMVA(new int[]{2,1,2,3,2,1,2,3}));
+        System.out.println(majorityElementBMVA(new int[]{2,1,2,4,7}));
     }
 }
