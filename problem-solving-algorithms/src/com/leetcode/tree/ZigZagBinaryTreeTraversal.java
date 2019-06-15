@@ -14,19 +14,19 @@ public class ZigZagBinaryTreeTraversal {
         Queue<TreeNode> queue = new LinkedList();
         queue.offer(root);
 
-        boolean normalOrder = false;
+        boolean order = false;
 
         while(!queue.isEmpty()) {
-            int level = queue.size();
+            int size = queue.size();
             LinkedList<Integer> subList = new LinkedList();
-            normalOrder = !normalOrder;
-            for(int i = 0; i < level; i++) {
+            order = !order;
+            while(size-- > 0) {
                 if(queue.peek().left != null)
                     queue.offer(queue.peek().left);
                 if(queue.peek().right != null)
                     queue.offer(queue.peek().right);
 
-                if(normalOrder)
+                if(order)
                     subList.add(queue.poll().val);
                 else
                     subList.addFirst(queue.poll().val);
@@ -35,13 +35,24 @@ public class ZigZagBinaryTreeTraversal {
         }
         return wrapList;
     }
+//          Sample input tree
+//                3
+//              /   \
+//             9     20
+//            / \   /  \
+//           8   16 15  7
 
     public static void main(String[] args) {
-        TreeNode treeNode = new TreeNode(3);
-        treeNode.left = new TreeNode(9);
-        treeNode.right = new TreeNode(20);
-        treeNode.right.left = new TreeNode(15);
+        TreeNode treeNode = new TreeNode(1);
+        treeNode.left = new TreeNode(2);
+        treeNode.right = new TreeNode(3);
+        treeNode.left.left = new TreeNode(4);
+        treeNode.left.right = new TreeNode(5);
+        treeNode.right.left = new TreeNode(6);
         treeNode.right.right = new TreeNode(7);
+        treeNode.left.left.left = new TreeNode(8);
+        treeNode.left.right.left = new TreeNode(9);
+        treeNode.right.right.right = new TreeNode(10);
         System.out.println("BFS - Zig Zag - "+zigzagLevelOrder(treeNode));
     }
 }

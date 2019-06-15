@@ -1,6 +1,5 @@
 package com.leetcode.tree;
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,15 +12,17 @@ public class BinaryTreeInOrderTraversalRecursion {
 
     public static void inOrderHelper(TreeNode root, List<Integer> vals) {
         if(root != null) {
-            if(root.left != null)
+            if(root.left != null) {
                 inOrderHelper(root.left, vals);
+            }
 
             vals.add(root.val);
 
-
-            if(root.right != null)
+            if(root.right != null) {
                 inOrderHelper(root.right, vals);
+            }
         }
+
     }
 
     public static void main(String[] args) {
@@ -30,6 +31,7 @@ public class BinaryTreeInOrderTraversalRecursion {
         treeNode.left.left = new TreeNode(5);
         treeNode.right = new TreeNode(2);
         treeNode.right.left = new TreeNode(3);
+        treeNode.right.right = new TreeNode(7);
         List<Integer> res = inorderTraversal(treeNode);
         System.out.print("In Order Traversal Recursive Approach : ");
         for(Integer val: res) {

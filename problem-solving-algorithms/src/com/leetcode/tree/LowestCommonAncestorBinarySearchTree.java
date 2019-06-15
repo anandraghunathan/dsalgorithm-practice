@@ -1,8 +1,11 @@
 package com.leetcode.tree;
 
-public class LowestCommonAncestor {
+public class LowestCommonAncestorBinarySearchTree {
 
     public static TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        if(root == null)
+            return null;
+
         int parentValue = root.val;
 
         int pValue = p.val;
@@ -25,6 +28,12 @@ public class LowestCommonAncestor {
         t1.left.right = new TreeNode(4);
         t1.left.left = new TreeNode(5);
 
-        //lowestCommonAncestor(t1, 4, 5);
+        // first input node
+        TreeNode p = t1.left.right;
+
+        // second input node
+        TreeNode q = t1.left.right;
+
+        System.out.println(lowestCommonAncestor(t1, p, q));
     }
 }

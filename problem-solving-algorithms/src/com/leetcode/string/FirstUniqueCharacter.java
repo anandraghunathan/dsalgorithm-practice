@@ -16,6 +16,6 @@ public class FirstUniqueCharacter {
     }
 
     public static void main(String[] args) {
-        System.out.println(firstUniqChar("dddccdbba"));
+        System.out.println(firstUniqChar("loveleetcode"));
     }
 }

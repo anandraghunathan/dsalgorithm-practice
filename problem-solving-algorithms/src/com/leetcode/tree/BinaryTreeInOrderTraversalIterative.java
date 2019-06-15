@@ -15,7 +15,6 @@ public class BinaryTreeInOrderTraversalIterative {
                 stack.push(curr);
                 curr = curr.left;
             }
-
             curr = stack.pop();
             res.add(curr.val);
             curr = curr.right;
@@ -29,6 +28,7 @@ public class BinaryTreeInOrderTraversalIterative {
         treeNode.left.left = new TreeNode(5);
         treeNode.right = new TreeNode(2);
         treeNode.right.left = new TreeNode(3);
+        treeNode.right.right = new TreeNode(7);
         List<Integer> res = inorderTraversal(treeNode);
         System.out.print("In Order Traversal Iterative Approach : ");
         for(Integer val: res) {

@@ -67,22 +67,22 @@ public class ReverseLinkedList {
 
     public static void main(String[] args) {
 
-        /** Iteratively reverse the LinkedList */
-        ListNodeLinkedList list = new ListNodeLinkedList();
-        list.addToFront(5);
-        list.addToFront(4);
-        list.addToFront(3);
-        list.addToFront(2);
-        list.addToFront(1);
-
-        // Printing the original input list
-        System.out.print("Iterative Input = ");
-        printNode(list.head);
-
-        // Reversing the linked list iteratively and printing the output
-        ListNode iterativelyreversedList = reverseListIteratively(list.head);
-        System.out.print("Iterative Output = ");
-        printNode(iterativelyreversedList);
+//        /** Iteratively reverse the LinkedList */
+//        ListNodeLinkedList list = new ListNodeLinkedList();
+//        list.addToFront(5);
+//        list.addToFront(4);
+//        list.addToFront(3);
+//        list.addToFront(2);
+//        list.addToFront(1);
+//
+//        // Printing the original input list
+//        System.out.print("Iterative Input = ");
+//        printNode(list.head);
+//
+//        // Reversing the linked list iteratively and printing the output
+//        ListNode iterativelyreversedList = reverseListIteratively(list.head);
+//        System.out.print("Iterative Output = ");
+//        printNode(iterativelyreversedList);
 
 
 

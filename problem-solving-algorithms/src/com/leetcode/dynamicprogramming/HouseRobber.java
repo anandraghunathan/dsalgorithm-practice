@@ -39,7 +39,7 @@ public class HouseRobber {
 
 
     public static void main(String[] args) {
-        System.out.println(robR(new int[]{2,7,9,3,1}));
+        //System.out.println(robR(new int[]{2,7,9,3,1}));
         System.out.println(robI(new int[]{2,7,9,3,1}));
     }
 }
