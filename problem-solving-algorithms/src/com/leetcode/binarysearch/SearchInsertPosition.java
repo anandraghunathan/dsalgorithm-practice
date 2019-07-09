@@ -1,18 +1,22 @@
-package com.leetcode.array;
+package com.leetcode.binarysearch;
 
+/**
+ * https://leetcode.com/problems/search-insert-position/
+ */
 public class SearchInsertPosition {
     public static int searchInsert(int[] nums, int target) {
         int lo = 0;
         int hi = nums.length - 1;
 
+        // continue searching while [lo,hi] is not empty
         while(lo <= hi) {
-            int mi = (lo + hi) / 2;
-            if(nums[mi] == target) {
-                return mi;
-            } else if (nums[mi] < target) {
-                lo = mi + 1;
+            int mid = (lo + hi) / 2;
+            if(nums[mid] == target) {
+                return mid;
+            } else if (nums[mid] < target) {
+                lo = mid + 1;
             } else {
-                hi = mi - 1;
+                hi = mid - 1;
             }
         }
         return lo;

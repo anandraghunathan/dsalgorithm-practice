@@ -8,6 +8,8 @@ public class ClimbingStairs {
      *
      * Space complexity : O(n). dp array of size n is used.
      *
+     * https://leetcode.com/problems/climbing-stairs/
+     *
      */
     public static int climbStairsI(int n) {
         if(n <= 0)
@@ -32,6 +34,8 @@ public class ClimbingStairs {
      * Time complexity : O(n). Single loop upto n is required to calculate nth fibonacci number.
      *
      * Space complexity : O(1). Constant space is used.
+     *
+     * https://leetcode.com/problems/climbing-stairs/
      */
     public static int climbStairsF1(int n) {
         if(n <= 0)
@@ -54,6 +58,6 @@ public class ClimbingStairs {
 
     public static void main(String[] args) {
         //System.out.println(climbStairsI(2));
-        System.out.println(climbStairsF1(1));
+        System.out.println(climbStairsF1(5));
     }
 }

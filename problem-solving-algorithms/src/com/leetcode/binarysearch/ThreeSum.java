@@ -1,4 +1,4 @@
-package com.leetcode.array;
+package com.leetcode.binarysearch;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,6 +14,7 @@ public class ThreeSum {
                 int lo = i+1;
                 int hi = num.length-1;
                 int sum = 0 - num[i];
+                // continually narrow search until just one element remains
                 while (lo < hi) {
                     if (num[lo] + num[hi] == sum) {
                         res.add(Arrays.asList(num[i], num[lo], num[hi]));
