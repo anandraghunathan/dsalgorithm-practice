@@ -12,7 +12,7 @@ public class CourseScehduleII {
         int[][] matrix = new int[numCourses][numCourses];
         int[] indegree = new int[numCourses];
 
-        // Result array
+        // Result array that will be returned with the correct ordering of finished courses
         int[] res = new int[numCourses];
 
         /** Step 1 - Iterate through the length of the pre-requisites 2D array and find the indegree for each vertex of the graph */
