@@ -24,16 +24,17 @@ public class PalindromePartitioning {
         }
     }
 
-    public static boolean isPalindromeHelper(String s, int low, int high){
-        while(low < high)
-            if(s.charAt(low++) != s.charAt(high--)) return false;
+    public static boolean isPalindromeHelper(String s, int start, int end){
+        while(start < end)
+            if(s.charAt(start++) != s.charAt(end--))
+                return false;
         return true;
     }
 
     public static void main(String[] args) {
         System.out.println("[");
         System.out.print("    ");
-        for(List<String> str : isPalindrome("acab")) {
+        for(List<String> str : isPalindrome("aab")) {
             System.out.print("[ ");
             for(String s : str) {
                 System.out.print(s +" ");
