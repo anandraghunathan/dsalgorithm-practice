@@ -5,6 +5,9 @@ package com.leetcode.tree;
  *
  * https://leetcode.com/problems/flatten-binary-tree-to-linked-list
  *
+ * Time : O(n)
+ * Space: O(1)
+ *
  */
 public class FlattenBinaryTreeToLinkedList {
     /*
@@ -14,6 +17,8 @@ public class FlattenBinaryTreeToLinkedList {
     private static TreeNode prev = null;
 
     /**
+     * Reversed postorder, as the traversal here goes along right -> left -> root.
+     *
      *  We will traverse the tree from right first, visit each right node,
      *  then traverse the left node, visit each left node and point to the root's right
      *  node to the prev node that will have the flattened tree
@@ -22,7 +27,7 @@ public class FlattenBinaryTreeToLinkedList {
         if(root == null)
             return;
 
-        // Recursively call the root right nodes to flatten from right to left
+        // Recursively call the root right nodes to flatten from right, left and finally root
         flatten(root.right);
 
         // Recursively call the root left nodes to flatten it after completing the root's right
