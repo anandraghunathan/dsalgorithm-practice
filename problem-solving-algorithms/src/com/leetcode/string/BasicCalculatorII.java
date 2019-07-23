@@ -15,6 +15,9 @@ public class BasicCalculatorII {
     public static int calculate(String s) {
         int len = s.length();
 
+        if(s == null || len == 0)
+            return 0;
+
         // Stack to perform the calculation
         Stack<Integer> stack = new Stack();
 
@@ -22,23 +25,23 @@ public class BasicCalculatorII {
         int num = 0;
         char sign = '+';
 
-        if(s == null || len == 0)
-            return 0;
-
         for(int i = 0; i < len; i++) {
 
+            // Store the current number/sign in current index
+            char c = s.charAt(i);
+
             // Handle the numbers case
-            if(Character.isDigit(s.charAt(i)))
+            if(Character.isDigit(c))
 
                 // num * 10 to handle numbers greater than 1 digit
-                num = num * 10 + s.charAt(i) - '0';
+                num = num * 10 + c - '0';
 
             /** Handle non-numeric case.
                 1. If the index is a non-number AND
                 2. If entry at the index is NOT a whitespace, we should just ignore and move on (OR)
                 3. If the index has reached the end of string
             */
-            if(!Character.isDigit(s.charAt(i)) && s.charAt(i) != ' ' || i == len - 1) {
+            if(!Character.isDigit(c) && c != ' ' || i == len - 1) {
                 /**
                     If the sign is a '+' then we simply push the current num computed
                     in the previous iteration to the stack.
@@ -52,17 +55,17 @@ public class BasicCalculatorII {
                 if(sign == '+')
                     stack.push(num);
 
-                if(sign == '-')
+                else if(sign == '-')
                     stack.push(-num);
 
-                if(sign == '*')
+                else if(sign == '*')
                     stack.push(stack.pop() * num);
 
-                if(sign == '/')
+                else if(sign == '/')
                     stack.push(stack.pop() / num);
 
                 // Finally change the sign to the sign at the current index and reset the num to 0
-                sign = s.charAt(i);
+                sign = c;
                 num = 0;
             }
         }
