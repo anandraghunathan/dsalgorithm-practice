@@ -29,7 +29,7 @@ public class UniqueBinarySearchTree {
                     Multiply the left subtree and right subtree possibilities to get the all the structurally unique BST(s)
                     we can build given the specific root element (for example 1 as root for n = 3)
                  */
-                dp[level] += dp[level - root] * dp[root - 1];
+                dp[level] += dp[root - 1] * dp[level - root];
             }
         }
         return dp[n];
