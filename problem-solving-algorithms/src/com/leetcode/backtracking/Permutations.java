@@ -29,7 +29,7 @@ public class Permutations {
     public static void main(String[] args) {
         System.out.println("[");
         System.out.print("    ");
-        for(List<Integer> nums : permute(new int[]{1, 2, 3})) {
+        for(List<Integer> nums : permute(new int[]{1, 2, 3, 4})) {
             System.out.print("[ ");
             for(int num : nums) {
                 System.out.print(num +" ");

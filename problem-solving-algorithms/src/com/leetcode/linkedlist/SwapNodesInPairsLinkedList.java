@@ -20,7 +20,7 @@ public class SwapNodesInPairsLinkedList {
 
             /* First we will point the swap2 (2 -> 3 -> 4 -> null)
                 to point.next that will become (0 -> 2 -> 3 -> 4 -> null) */
-            point.next = swap2;
+            point.next = swap1.next;
 
             /* 1 -> 2 -> 3 -> 4 -> null becomes 1 -> 3 -> 4 -> null */
             swap1.next = swap2.next;

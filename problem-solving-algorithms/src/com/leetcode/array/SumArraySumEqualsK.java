@@ -81,6 +81,6 @@ public class SumArraySumEqualsK {
 
     public static void main(String[] args) {
         // System.out.println(subarraySumSlow(new int[]{1, 1, 1}, 2));
-        System.out.println(subarraySum(new int[]{1, 1, 1}, 2));
+        System.out.println(subarraySum(new int[]{-1, 1, 1}, 2));
     }
 }

@@ -1,6 +1,53 @@
 package com.leetcode.tree;
 
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * https://leetcode.com/problems/path-sum-iii/
+ *
+ */
 public class PathSumIII {
+    /**
+     *       10
+     *      /  \
+     *     5   -3
+     *    / \    \
+     *   3   2   11
+     *  / \   \
+     * 3  -2   1
+     *
+     * Slow approach cause it does two DFS.
+     *
+     * Time  : O(n ^ 2) in the worst case (when no branching in tree, the sequence goes like 1 -> 2 -> 3 .. i --> n - 1 -> n),
+     *          and the given sum has an upper bound of i possibilities
+     *         O(NlogN) in best case. A balanced tree
+     *
+     * Space: O(N), due to recursion done twice, one DFS to find the root (pathFromSum),
+     *              and the another DFS to find the sum inside the binary tree lead by that node.
+     *
+     *              1. pathSumFrom means pathSum starting at that node,
+     *              2. pathSum means the sum inside the binary tree lead by that node.
+     *  If only pathSumFrom is called then it would only return number of paths starting at the root.
+     *
+     */
+    public static int pathSumSlow(TreeNode root, int sum) {
+
+        if(root == null)
+            return 0;
+        return pathSumFrom(root, sum)
+                + pathSumSlow(root.left, sum)
+                + pathSumSlow(root.right, sum);
+    }
+
+    private static int pathSumFrom(TreeNode node, int sum) {
+        if (node == null)
+            return 0;
+        return (node.val == sum ? 1 : 0)
+                + pathSumFrom(node.left, sum - node.val)
+                + pathSumFrom(node.right, sum - node.val);
+    }
+
     /**
      *       10
      *      /  \
@@ -12,22 +59,28 @@ public class PathSumIII {
      *
      */
     public static int pathSum(TreeNode root, int sum) {
+        Map<Integer, Integer> preSum = new HashMap<>();
+        //preSum.put(0, 1); // Cause default sum = 0 has 1 possibility
+        return helper(root, 0, sum, preSum);
+    }
 
+    public static int helper(TreeNode root, int currSum, int target, Map<Integer, Integer> preSum) {
         if(root == null)
             return 0;
-        return pathSumFrom(root, sum)
-                + pathSum(root.left, sum)
-                + pathSum(root.right, sum);
-    }
 
-    private static int pathSumFrom(TreeNode node, int sum) {
-        if (node == null)
-            return 0;
-        return (node.val == sum ? 1 : 0)
-                + pathSumFrom(node.left, sum - node.val)
-                + pathSumFrom(node.right, sum - node.val);
-    }
+        // Add the current root val to the sum calculated so far
+        currSum += root.val;
 
+        int res = preSum.getOrDefault(currSum - target, 0); //See if there is a sub-array sum equals to target
+        preSum.put(currSum, preSum.getOrDefault(currSum, 0) + 1);
+
+        //Extend to left and right child
+        res += helper(root.left, currSum, target, preSum)
+                    + helper(root.right, currSum, target, preSum);
+        preSum.put(currSum, preSum.get(currSum) - 1); //Remove the current node so it wont affect other path
+        return res;
+
+    }
     /**
      *       10
      *      /  \

@@ -119,9 +119,9 @@ public class ReverseLinkedList {
         ListNodeLinkedList list2 = new ListNodeLinkedList();
         list2.addToFront(5);
         list2.addToFront(4);
-//        list2.addToFront(3);
-//        list2.addToFront(2);
-//        list2.addToFront(1);
+        list2.addToFront(3);
+        list2.addToFront(2);
+        list2.addToFront(1);
 
         // Printing the original input list
         System.out.print("Recursive Input = ");

@@ -1,5 +1,8 @@
 package com.leetcode.linkedlist;
 
+/**
+ * Floyd's tortoise-hare cycle-finding algorithm
+ */
 public class FindDuplicateNumber {
     public static int findDuplicate(int[] nums) {
         int fast = 0;
@@ -10,7 +13,8 @@ public class FindDuplicateNumber {
             fast = nums[nums[fast]];
             if(slow == fast) break;
         }
-        slow = 0;
+
+        fast = 0;
         while(slow != fast) {
             slow = nums[slow];
             fast = nums[fast];
