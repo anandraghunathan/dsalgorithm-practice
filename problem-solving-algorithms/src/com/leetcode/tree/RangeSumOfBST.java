@@ -2,21 +2,15 @@ package com.leetcode.tree;
 
 import java.util.Stack;
 
+/**
+ * https://leetcode.com/problems/range-sum-of-bst/
+ */
 public class RangeSumOfBST {
+    static int sum;
+
     public static int rangeSumBST_recurive(TreeNode root, int L, int R) {
-        if(root == null)
-            return 0;
-
-        int sum = 0;
-
-        sum = sumBST(root, L, R, 0);
-
-        if(root.left != null)
-           sumBST(root.left, L, R, sum);
-
-        if(root.right != null)
-           sumBST(root.right, L, R, sum);
-
+        sum = 0;
+        sumBST(root, L, R);
         return sum;
     }
 
@@ -28,15 +22,27 @@ public class RangeSumOfBST {
       3   7     18
 
      */
-    public static int sumBST(TreeNode node, int L, int R, int sum) {
-        if(node.val >= L && node.val <= R) {
-            sum = sum + node.val;
+    public static void sumBST(TreeNode node, int L, int R) {
+        if (node != null) {
+            if (L <= node.val && node.val <= R)
+                sum += node.val;
+            if (L < node.val)
+                sumBST(node.left, L, R);
+            if (node.val < R)
+                sumBST(node.right, L, R);
         }
-        return sum;
     }
 
-    int sum;
-    public int rangeSumBST_iterative(TreeNode root, int L, int R) {
+
+    /*
+          10
+         /  \
+        5    15
+       / \     \
+      3   7     18
+
+     */
+    public static int rangeSumBST_iterative(TreeNode root, int L, int R) {
         Stack<TreeNode> stack = new Stack();
         stack.push(root);
 
