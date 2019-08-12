@@ -10,19 +10,20 @@ package com.leetcode.tree;
  */
 public class LowestCommonAncestorBinaryTree {
     public static TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-        if(root == null || root == p || root == q) {
+        if(root == null) {
+            return null;
+        }
+        if(root == p || root == q){
             return root;
         }
 
         TreeNode left = lowestCommonAncestor(root.left, p, q);
         TreeNode right = lowestCommonAncestor(root.right, p, q);
 
-        if(left == null)
-            return right;
-        else if(right == null)
-            return left;
-        else
+        if(left != null && right != null)
             return root;
+
+        return left != null ? left : right;
     }
 
     public static void main(String[] args) {
@@ -34,7 +35,7 @@ public class LowestCommonAncestorBinaryTree {
         t1.right.right = new TreeNode(6);
 
         // first input node
-        TreeNode p = t1.left.left;
+        TreeNode p = t1.left;
 
         // second input node
         TreeNode q = t1.left.right;
