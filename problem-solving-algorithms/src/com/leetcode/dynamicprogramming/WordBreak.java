@@ -29,6 +29,6 @@ public class WordBreak {
         List<String> wordDict = new ArrayList<>();
         wordDict.add("leet");
         wordDict.add("code");
-        System.out.println(wordBreak("", wordDict));
+        System.out.println(wordBreak("leetcode", wordDict));
     }
 }
