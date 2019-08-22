@@ -127,6 +127,41 @@ public class SuperEggDrop {
         return dp[N];
     }
 
+    /**
+     *
+     * Top down, recursive solution
+     *
+     */
+    public int superEggDropRecursive(int K, int N) {
+        /**
+         * Below two if are base condition checks
+         */
+        // If total number of eggs is 1, we have to make N moves in the worst case
+        if(K == 1) {
+            return N;
+        }
+
+        // If total number of floors is 0, we have 0 moves to make
+        // Similarly, if we have 1 floor, regardless of how many eggs we have, we have to make 1 move
+        if(N == 0) {
+            return 0;
+        } else if(N == 1) {
+            return 1;
+        }
+        int min = 1000;
+        for(int i = 1; i <= N; i++) {
+            int val = 1 + Math.max(superEggDropRecursive(K - 1, i - 1), superEggDropRecursive(K, N - i));
+            if(val < min) {
+                min = val;
+            }
+        }
+        return min;
+    }
+
+    /**
+     *
+     * Bottom Up 2D matrix solution
+     */
     public int superEggDrop(int totalEggs, int totalFloors) {
         /*
           We do +1 to index off of 1. So that the final answer that
