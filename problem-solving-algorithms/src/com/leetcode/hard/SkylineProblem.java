@@ -5,6 +5,10 @@ import java.util.*;
 /**
  * Created by Anand Raghunathan on 2019-08-22
  *
+ * https://leetcode.com/problems/the-skyline-problem/
+ *
+ * https://www.youtube.com/watch?v=GSBLe8cKu0s
+ *
  * Time  : O(N log N), log N time each for adding, removing and accessing the TreeMap. In PQ, removing takes O(N)
  *
  * Space : O(N), takes linear space
@@ -36,6 +40,9 @@ public class SkylineProblem {
      *
      * As we remove from priority queue it takes O(n) time. Instead of that, we use a TreeMap to sort values by height
      * and remove values in O(log n) time.
+     *
+     *  * Time complexity is O(nlogn)
+     *  * Space complexity is O(n)
      *
      */
     public List<List<Integer>> getSkyline(int[][] buildings) {

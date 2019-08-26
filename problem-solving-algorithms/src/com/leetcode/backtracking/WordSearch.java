@@ -3,8 +3,11 @@ package com.leetcode.backtracking;
 public class WordSearch {
     public static boolean exist(char[][] board, String word) {
         char[] w = word.toCharArray();
-        for (int i=0; i<board.length; i++) {
-            for (int j=0; j<board[i].length; j++) {
+
+        int m = board.length;
+        int n = board[0].length;
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
                 if (exist(board, i, j, w, 0))
                     return true;
             }
@@ -12,26 +15,33 @@ public class WordSearch {
         return false;
     }
 
-    private static boolean exist(char[][] board, int i, int j, char[] word, int index) {
-        if (index == word.length)
+    private static boolean exist(char[][] board, int i, int j, char[] word, int matchCount) {
+        if (matchCount == word.length)
             return true;
-        if (i<0 || j<0 || i == board.length || j == board[i].length)
+
+        if (i < 0 || i >= board.length || j < 0 || j >= board[i].length)
             return false;
-        if (board[i][j] != word[index])
+
+        if (board[i][j] != word[matchCount])
             return false;
-        //board[i][j] ^= 256;
-        boolean exist = exist(board, i, j+1, word, index+1)
-                || exist(board, i, j-1, word, index+1)
-                || exist(board, i+1, j, word, index+1)
-                || exist(board, i-1, j, word, index+1);
-        //board[i][j] ^= 256;
+
+        // To check if the char in the current cell is a reuse
+        board[i][j] ^= 256;
+        boolean exist = exist(board, i, j+1, word, matchCount+1)
+                || exist(board, i, j-1, word, matchCount+1)
+                || exist(board, i+1, j, word, matchCount+1)
+                || exist(board, i-1, j, word, matchCount+1);
+        board[i][j] ^= 256;
+
         return exist;
     }
 
     public static void main(String[] args) {
         System.out.println(exist(new char[][] {
-                                                {'a'}
-                                              }, "aaa")
+                                                {'a', 'a', 'e'},
+                                                {'k', 'h', 'i'},
+                                                {'d', 'f', 'g'},
+                                              }, "aahigfdkaa")
                           );
     }
 }

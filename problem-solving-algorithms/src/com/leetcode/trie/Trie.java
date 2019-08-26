@@ -13,12 +13,8 @@ package com.leetcode.trie;
  *  2. A flag that which specifies whether the current node corresponds to the end of the key, or is just a key prefix.
  *     If the node is the end of the key, then it will have this property set to true. Otherwise, false.
  */
-class TrieNode {
-    TrieNode[] children = new TrieNode[26];
-    boolean isCompleteWord;
-}
 
-class Trie {
+public class Trie {
 
     TrieNode root;
     /** Initialize your data structure here. */
