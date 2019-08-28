@@ -3,7 +3,7 @@
  * Do pattern matching using KMP algorithm
  *
  * Runtime complexity - O(m + n) where m is length of text and n is length of pattern
- * Space complexity - O(n)
+ * Space complexity - O(n), the longest prefix that is also suffix array we store to compare the text against
  */
 
 public class KMPSubstringSearch {
@@ -36,43 +36,71 @@ public class KMPSubstringSearch {
     /**
      * Compute temporary array to maintain size of suffix which is same as prefix
      * Time/space complexity is O(size of pattern)
+     *
+     *
+     * Pattern = "abcdabcy";
      */
-    private int[] computeTemporaryArray(char pattern[]){
-        int [] lps = new int[pattern.length];
-        int index =0;
-        for(int i=1; i < pattern.length;){
-            if(pattern[i] == pattern[index]){
-                lps[i] = index + 1;
-                index++;
+    private int[] computeTemporaryArray(char[] pattern) {
+        int[] longestPrefixAlsoSuffix = new int[pattern.length];
+        int j = 0;
+        for(int i = 1; i < pattern.length;) {
+            if(pattern[j] == pattern[i]) {
+                /*
+                    Since there is a match between the character at j and i of the pattern,
+                    we make the array value at index i to the index of where j currently is + 1
+                    In other words, we are saying, there is 1 match found between characters at
+                    i and j of the pattern, when we find the characters at the next index matching,
+                    then j will be one next to the right, so we found two matches.. and so on..
+
+                    And then we increment both i and j to seek for the next comparison from where
+                    the match is found.
+                 */
+                longestPrefixAlsoSuffix[i] = j + 1;
+                j++;
                 i++;
-            }else{
-                if(index != 0){
-                    index = lps[index-1];
-                }else{
-                    lps[i] =0;
+            }else {
+                if(j != 0) {
+                    /*
+                        Since the there is no match between the character at j and i of the pattern
+                        and j is 0, we take assign the value at the index j - 1 of array we are computing
+                        In other words, assign the previous VALUE (present at index j - 1) of the longestPrefixAlsoSuffix
+                     */
+                    j = longestPrefixAlsoSuffix[j - 1];
+                } else {
+                    /*
+                        Since the there is no match between the character at j and i of the pattern
+                        and j is not 0, we make the current value to the index i as 0 and increment i
+                     */
+                    longestPrefixAlsoSuffix[i] = 0;
                     i++;
                 }
             }
         }
-        return lps;
+        return longestPrefixAlsoSuffix;
     }
 
     /**
      * KMP algorithm of pattern matching.
      */
-    public boolean KMP(char []text, char []pattern){
+    public boolean KMP(char[] text, char[] pattern) {
 
-        int lps[] = computeTemporaryArray(pattern);
-        int i=0;
-        int j=0;
-        while(i < text.length && j < pattern.length){
-            if(text[i] == pattern[j]){
+        int[] longestPrefixAlsoSuffix = computeTemporaryArray(pattern);
+        int i = 0;
+        int j = 0;
+        while(i < text.length && j < pattern.length) {
+            if(text[i] == pattern[j]) {
+                // When a match is found between the text and the patten at the index, just increment i and j
                 i++;
                 j++;
-            }else{
-                if(j!=0){
-                    j = lps[j-1];
-                }else{
+            } else {
+                /*
+                    When no match, check if j is at index 0, if not, assign the previous VALUE (present at
+                    j - 1) of the longestPrefixAlsoSuffix as the new index of j
+                 */
+                if(j != 0) {
+                    j = longestPrefixAlsoSuffix[j - 1];
+                } else {
+                    // When no match and j is 0, just increment i to move on the next character in the text
                     i++;
                 }
             }
@@ -87,10 +115,10 @@ public class KMPSubstringSearch {
 
         String str = "abcxabcdabcdabcy";
         String subString = "abcdabcy";
-        KMPSubstringSearch ss = new KMPSubstringSearch();
-        boolean result = ss.hasSubstring(str.toCharArray(), subString.toCharArray());
-//        boolean result = ss.KMP(str.toCharArray(), subString.toCharArray());
-        System.out.print(result);
+        KMPSubstringSearch obj = new KMPSubstringSearch();
+        //boolean result = ss.hasSubstring(str.toCharArray(), subString.toCharArray());
+        boolean result = obj.KMP(str.toCharArray(), subString.toCharArray());
+        System.out.println(result);
 
     }
 }

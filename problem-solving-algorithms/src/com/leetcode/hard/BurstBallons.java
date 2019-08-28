@@ -1,5 +1,14 @@
 package com.leetcode.hard;
 
+/**
+ * https://leetcode.com/problems/burst-balloons/
+ *
+ * https://www.youtube.com/watch?v=IFNibRVgFBo&t=550s
+ *
+ * Time  : O(n^3), because we are exploring every sub-array and for every sub-array we have a pointer i go from start
+ *          to end to find the last balloon to burst to make the maximum coins
+ * Space : O(n^2), we solve using a 2D matrix of length of the given array (dp array)
+ */
 public class BurstBallons {
     public int maxCoins(int[] nums) {
         int dp[][] = new int[nums.length][nums.length];
@@ -36,8 +45,8 @@ public class BurstBallons {
                     }
 
                     int coins = 0;
+                    coins += before + after;
                     coins += leftValue * nums[i] * rightValue;
-                    coins += before + after + dp[start][end];
                     dp[start][end] = Math.max(dp[start][end], coins);
                 }
             }
