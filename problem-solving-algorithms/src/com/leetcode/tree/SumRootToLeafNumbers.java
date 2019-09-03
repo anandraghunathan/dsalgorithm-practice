@@ -12,8 +12,8 @@ package com.leetcode.tree;
  *          Otherwise, we do the DFS to explore more by going left and right of the current node till we get to the leaf node
  *          by passing the prevVal * 10 * currNode.val as the "prevVal" for the next recursion.
  *
- *          Time  : O(H), run time takes height of binary tree time (TO DIG DEEP)
- *          Space : O(H), not using any extra space. Recursive stack takes O(height of the tree space) (TO DIG DEEP)
+ *          Time  : O(N), We traverse through all the nodes of the tree
+ *          Space : O(H), not using any extra space. H is the maximum height of the tree
  */
 public class SumRootToLeafNumbers {
     public int sumNumbers(TreeNode root) {
