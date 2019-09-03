@@ -19,6 +19,9 @@ public class PathSumIII {
      *
      * Slow approach cause it does two DFS.
      *
+     * pathSumFrom means the path sum starting at that node. While pathSumSlow means the sum inside the binary tree lead
+     * by that node. If only pathSumFrom is called then it would only return number of paths starting at the root.
+     *
      * Time  : O(n ^ 2) in the worst case (when no branching in tree, the sequence goes like 1 -> 2 -> 3 .. i --> n - 1 -> n),
      *          and the given sum has an upper bound of i possibilities
      *         O(NlogN) in best case. A balanced tree
@@ -28,7 +31,7 @@ public class PathSumIII {
      *
      *              1. pathSumFrom means pathSum starting at that node,
      *              2. pathSum means the sum inside the binary tree lead by that node.
-     *  If only pathSumFrom is called then it would only return number of paths starting at the root.
+     *
      *
      */
     public static int pathSumSlow(TreeNode root, int sum) {
@@ -125,6 +128,7 @@ public class PathSumIII {
         System.out.print(t1.left.right.right != null ? t1.left.right.right.val + ", "  : null + ", ");
 
         System.out.println("");
-        System.out.println(pathSum(t1, 8));
+        //System.out.println(pathSum(t1, 8));
+        System.out.println(pathSumSlow(t1, 8));
     }
 }
