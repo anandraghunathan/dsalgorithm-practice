@@ -10,15 +10,15 @@ import java.util.Queue;
  * https://leetcode.com/problems/maximum-width-of-binary-tree/
  *
  * Intuition:
- *      The idea is to traverse all the node in the tree in level order(Here I use one Queue to store each level's nodes.
- *      The time I traverse each level is the queue's size(the number of nodes from upper level)). Each time a node is
- *      traversed, the position of the node(as it is in a full binary tree) is stored in the HashMap. If the position
- *      of the parent node is 'n', then the left child is '2 * n' and the right child is '2 * n + 1'. The width of each
- *      level is the last node's position in this level subtracts the first node's position in this level plus 1.
- *
- * Algorithm:
  *      Traverse each node in breadth-first order, keeping track of that node's position. For each depth, the first
  *      node reached is the left-most, while the last node reached is the right-most.
+ *
+ * Algorithm:
+ *     The idea is to traverse all the node in the tree in level order(Here I use one Queue to store each level's nodes.
+ *     The time I traverse each level is the queue's size(the number of nodes from upper level)). Each time a node is
+ *     traversed, the position of the node(as it is in a full binary tree) is stored in the HashMap. If the position
+ *     of the parent node is 'n', then the left child is '2 * n' and the right child is '2 * n + 1'. The width of each
+ *     level is the last node's position in this level subtracts the first node's position in this level plus 1.
  *
  * Time  : O(n), where n is the number of nodes in the input tree. We traverse every node.
  * Space : O(n), the size of our queue.
