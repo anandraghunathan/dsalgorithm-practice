@@ -1,4 +1,4 @@
-package com.leetcode.array;
+package com.leetcode.dynamicprogramming;
 
 public class BuyAndSellStockIV {
     /**

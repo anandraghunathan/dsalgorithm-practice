@@ -1,4 +1,4 @@
-package com.leetcode.array;
+package com.leetcode.dynamicprogramming;
 
 /**
  * https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/

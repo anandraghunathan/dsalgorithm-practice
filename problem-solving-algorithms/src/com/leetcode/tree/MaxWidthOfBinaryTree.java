@@ -22,6 +22,14 @@ import java.util.Queue;
  *
  * Time  : O(n), where n is the number of nodes in the input tree. We traverse every node.
  * Space : O(n), the size of our queue.
+ *
+ *           1
+ *          / \
+ *         3   2
+ *        /     \
+ *       5       9
+ *      /         \
+ *     6           7
  */
 public class MaxWidthOfBinaryTree {
     public int widthOfBinaryTree(TreeNode root) {
@@ -65,6 +73,19 @@ public class MaxWidthOfBinaryTree {
         return maxWidth;
     }
 
+    /**
+     *  Test case tree -
+     *      The maximum width existing in the fourth level with the length 8 (6,null,null,null,null,null,null,7).
+     *
+     *           1
+     *          / \
+     *         3   2
+     *        /     \
+     *       5       9
+     *      /         \
+     *     6           7
+     *
+     */
     public static void main(String[] args) {
         TreeNode t1 = new TreeNode(1);
         t1.left = new TreeNode(2);

@@ -1,8 +1,4 @@
-package com.leetcode.array;
-
-import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+package com.leetcode.dynamicprogramming;
 
 /**
  * https://leetcode.com/problems/best-time-to-buy-and-sell-stock/

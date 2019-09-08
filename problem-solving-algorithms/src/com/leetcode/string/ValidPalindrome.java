@@ -2,35 +2,32 @@ package com.leetcode.string;
 
 public class ValidPalindrome {
     /*
+     * https://leetcode.com/problems/valid-palindrome/
+     *
      * Traverse the String by having two pointers head and tail, one from left to right
      * and the other from right to left. Ignore the special characters that are not letters
      * or digits. When a character is found, check if left and right are the same by converting
      * into lowercase, otherwise return false.
      */
     public static boolean isPalindrome(String s) {
-        if(s.isEmpty())
+        int n = s.length() - 1;
+
+        if(s.length() == 0)
             return true;
 
-        int head = 0;
-        int tail = s.length() - 1;
-        char cHead, cTail;
+        int lo = 0;
+        int hi = n;
 
-        while(head < tail) {
-            cHead = s.charAt(head);
-            cTail = s.charAt(tail);
-
-            if(!Character.isLetterOrDigit(cHead))
-                head++;
-
-            else if(!Character.isLetterOrDigit(cTail))
-                tail--;
-
-            else {
-                if(Character.toLowerCase(cHead) != Character.toLowerCase(cTail)) {
-                    return false;
-                }
-                head++;
-                tail--;
+        while(lo <= hi) {
+            if(Character.toLowerCase(s.charAt(lo)) == Character.toLowerCase(s.charAt(hi))) {
+                lo++;
+                hi--;
+            } else if(!Character.isLetterOrDigit(s.charAt(lo))) {
+                lo++;
+            } else if(!Character.isLetterOrDigit(s.charAt(hi))) {
+                hi--;
+            } else {
+                return false;
             }
         }
         return true;
