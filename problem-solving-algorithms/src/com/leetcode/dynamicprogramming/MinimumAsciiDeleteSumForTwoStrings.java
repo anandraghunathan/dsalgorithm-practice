@@ -21,12 +21,12 @@ public class MinimumAsciiDeleteSumForTwoStrings {
             Similarly do it for the other string s2
          */
         for(int i = 1; i <= m; i++) {
-            // fill up the 0th column
+            // fill up the 0th column for all rows of s1
             minSum[i][0] = minSum[i - 1][0] + s1.charAt(i - 1);
         }
 
         for(int j = 1; j <= n; j++) {
-            // fill up the diagonal from top 0 to bottom most cell
+            // fill up the 0th row for all columns of s2
             minSum[0][j] = minSum[0][j - 1] + s2.charAt(j - 1);
         }
 
@@ -41,6 +41,7 @@ public class MinimumAsciiDeleteSumForTwoStrings {
                     minSum[i][j] = minSum[i - 1][j - 1];
                 } else {
                     // Min because we are to find the min ASCII sum of deleted characters
+                    // Min between the left and top cell values
                     minSum[i][j] = Math.min(minSum[i - 1][j] + s1.charAt(i - 1),
                             minSum[i][j - 1] + s2.charAt(j - 1));
                 }

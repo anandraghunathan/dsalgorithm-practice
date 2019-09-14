@@ -26,10 +26,11 @@ public class FindPeakElement {
         // continually narrow search until just one element remains
         while(lo < hi) {
             int mid = (lo + hi) / 2;
-            if(nums[mid] < nums[mid + 1])
+            if(nums[mid] < nums[mid + 1]) { // peak index is after mid.
                 lo = mid + 1;
-            else
+            } else if(nums[mid + 1] < nums[mid]) { // peak index is before mid.
                 hi = mid;
+            }
         }
         return lo;
     }
