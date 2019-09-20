@@ -24,7 +24,7 @@ public class HouseRobber {
         return result;
     }
 
-    /** Bottom up down - Iterative */
+    /** Bottom up - Iterative */
     public static int robI(int[] nums) {
         if (nums.length == 0) return 0;
         int[] dp = new int[nums.length + 1];
@@ -35,6 +35,17 @@ public class HouseRobber {
             dp[i + 1] = Math.max(dp[i], dp[i - 1] + nums[i]);
         }
         return dp[nums.length];
+    }
+
+    /** Bottom up - With 2 pointers */
+    public static int rob(int[] nums) {
+        int preRob = 0, preNotRob = 0;
+        for(int i = 0; i < nums.length; i++) {
+            int rob = preRob, notRob = preNotRob;
+            preRob = notRob + nums[i];
+            preNotRob = Math.max(notRob, rob);
+        }
+        return Math.max(preNotRob, preRob);
     }
 
 
