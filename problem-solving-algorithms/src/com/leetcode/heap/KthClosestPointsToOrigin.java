@@ -3,7 +3,11 @@ package com.leetcode.heap;
 import java.util.PriorityQueue;
 
 /**
+ * Solved on Sep 20 2019
+ *
  * https://leetcode.com/problems/k-closest-points-to-origin
+ *
+ * TODO - Quick select approach
  */
 public class KthClosestPointsToOrigin {
     /**

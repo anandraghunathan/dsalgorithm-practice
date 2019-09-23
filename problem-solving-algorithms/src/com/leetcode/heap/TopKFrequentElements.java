@@ -2,6 +2,16 @@ package com.leetcode.heap;
 
 import java.util.*;
 
+/**
+ *  Solved on 27th May 2019
+ *
+ *  https://leetcode.com/problems/top-k-frequent-elements
+ *
+ *  Time  : O(Nlog(k)). The complexity of Counter method is O(N). To build a heap and output list takes O(N log(k)).
+ *          Hence the overall complexity of the algorithm is O(N + Nlog(k))=O(N log(k)).
+ *  Space : O(N), to store the hash map.
+ *
+ */
 public class TopKFrequentElements {
     public static List<Integer> topKFrequent(int[] nums, int k) {
         // Count the number of occurrences of each element in the array using hashtable

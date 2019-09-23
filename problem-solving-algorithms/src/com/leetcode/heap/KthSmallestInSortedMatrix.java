@@ -4,6 +4,7 @@ import java.util.PriorityQueue;
 
 public class KthSmallestInSortedMatrix {
     /**
+     * Solved on Aug 30 2019
      *
      * https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/
      *
@@ -53,7 +54,7 @@ public class KthSmallestInSortedMatrix {
         for(int i = 0; i < k - 1; i++) {
             Tuple t = pq.poll();
             if(t.x == n - 1)
-                continue; // We have hit the last row, can go down to add any further
+                continue; // We have hit the last row, can't go down to add any further
             // Else, add the next row's val below the current val that we polled
             pq.offer(new Tuple(t.x + 1, t.y, matrix[t.x + 1][t.y]));
         }

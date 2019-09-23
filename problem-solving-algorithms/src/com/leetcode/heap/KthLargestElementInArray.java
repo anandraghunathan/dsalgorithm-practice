@@ -3,7 +3,7 @@ package com.leetcode.heap;
 import java.util.PriorityQueue;
 
 /**
- *  Solved on May 15 2019
+ *  Solved on May 15 2019, modified on Sep 20 2019
  *
  *  https://leetcode.com/problems/kth-largest-element-in-an-array
  *
@@ -15,6 +15,8 @@ import java.util.PriorityQueue;
  *          complexity is O(N log K).
  *
  *  Space : O(1), constant space cause we don't use any extra space.
+ *
+ *  TODO - Quick select approach
  */
 public class KthLargestElementInArray {
     public static int findKthLargest(int[] nums, int k) {
