@@ -4,20 +4,17 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- *
- * Time complexity : O(n)
- *
- * Boyer-Moore performs constant work exactly n times, so the algorithm runs in linear time.
- *
- * Space complexity : O(1)
- *
- * Boyer-Moore allocates only constant additional memory.
- *
+ *  https://leetcode.com/problems/majority-element
  */
-
 public class MajorityElement {
-
-    /** Boyer Moore Voting Algorithm */
+    /**
+     *  Boyer Moore Voting Algorithm
+     *
+     *  Time  : O(n), Boyer-Moore performs constant work exactly n times, so the algorithm runs in linear time.
+     *
+     *  Space : O(1), no extra space
+     *
+     */
     // 7, 7, 5, 7, 5, 1, 5, 7, 5, 5, 7, 7, 7, 7, 7, 7
     public static int majorityElementBMVA(int[] nums) {
         int count = 0;
@@ -37,30 +34,24 @@ public class MajorityElement {
     }
 
 
-    /** Map & Entry Set logic */
+    /**
+     *  HashMap & logic
+     *
+     *  Time  : O(N)
+     *  Space : O(N)
+     */
     public static int majorityElement(int[] nums) {
-        Map<Integer, Integer> counts = populateMap(nums);
-
-        Map.Entry<Integer, Integer> majorityEntry = null;
-
-        for(Map.Entry<Integer, Integer> entry : counts.entrySet()) {
-            if(majorityEntry == null || entry.getValue() > majorityEntry.getValue()) {
-                majorityEntry = entry;
-            }
-        }
-        return majorityEntry.getKey();
-    }
-
-    public static Map<Integer, Integer> populateMap(int[] nums) {
-        Map<Integer, Integer> map = new HashMap<>();
+        HashMap<Integer, Integer> map = new HashMap<>();
         for(int num : nums) {
-            if(!map.containsKey(num)) {
-                map.put(num, 1);
-            } else {
-                map.put(num, map.get(num)+ 1);
-            }
+            map.put(num, map.getOrDefault(num, 0) + 1);
         }
-        return map;
+
+        for(int candidate : map.keySet()) {
+            int candidateCount = map.get(candidate);
+            if(candidateCount > nums.length / 2)
+                return candidate;
+        }
+        return -1;
     }
 
     public static void main(String[] args) {
