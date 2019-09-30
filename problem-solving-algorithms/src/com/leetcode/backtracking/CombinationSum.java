@@ -3,7 +3,14 @@ package com.leetcode.backtracking;
 import java.util.ArrayList;
 import java.util.List;
 
-//https://leetcode.com/problems/combination-sum/
+/**
+ *  Solved on May 03 2019
+ *  https://leetcode.com/problems/combination-sum/
+ *
+ *  Time  : O(N ^ target) where N is a length of candidates array.
+ *  Space : O(target).
+ */
+
 public class CombinationSum {
     public static List<List<Integer>> combinationSum(int[] candidates, int target) {
         List<List<Integer>> combinations = new ArrayList();

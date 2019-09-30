@@ -4,8 +4,19 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-// https://leetcode.com/problems/subsets/
+/**
+ *  Solved May 03 2019
+ *  https://leetcode.com/problems/subsets
+ *
+ * Time  :  O(2 ^ n) as total 2 ^ n possible subsets can be there for n items.
+ * Space : O( n + n) = O(n) is the (maximum depth of recursion tree + 'num' list space)
+ *
+ */
 public class Subsets {
+    /**
+     *
+     * 2 ^ n = total subsets. So if nums length is 3, we will have 2 ^ 3 = 8 all subsets (Power set)
+     */
     public static List<List<Integer>> subsets(int[] nums) {
         List<List<Integer>> list = new ArrayList<>();
         //Arrays.sort(nums); // contemplating whether this is required
