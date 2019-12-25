@@ -59,13 +59,17 @@ public class EncodeAndDecodeTinyURL {
     public String decode(String shortUrl) {
         /*
             Replace of String class replaces the character sequence of first parameter with the second parameter from the beginning
-            S = "aaa", ToReplace = "aa" Replace = "b", then "aaa" will be modifed as "ba", and not "ab"
+            S = "aaa", ToReplace = "aa" Replace = "b", then "aaa" will be modified as "ba", and not "ab"
         */
         return encoded.get(shortUrl.replace(BASE_URL, ""));
     }
 
     public static void main(String[] args) {
         EncodeAndDecodeTinyURL obj = new EncodeAndDecodeTinyURL();
-        System.out.println(obj.decode(obj.encode("https://leetcode.com/")));
+        String encoded = obj.encode("https://leetcode.com/");
+        System.out.println("Encoded: "+encoded);
+        String decoded = obj.decode(encoded);
+        System.out.println("Decoded : "+decoded);
+        //System.out.println(obj.decode(obj.encode("https://leetcode.com/")));
     }
 }
