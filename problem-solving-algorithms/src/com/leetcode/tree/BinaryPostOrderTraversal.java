@@ -8,7 +8,7 @@ import java.util.Stack;
 // https://leetcode.com/problems/binary-tree-postorder-traversal/
 
 public class BinaryPostOrderTraversal {
-    public List<Integer> postorderTraversalIterative(TreeNode root) {
+    public static List<Integer> postorderTraversalIterative(TreeNode root) {
         LinkedList<Integer> postOrderList = new LinkedList();
 
         if(root == null)
@@ -44,5 +44,16 @@ public class BinaryPostOrderTraversal {
                 postorderTraversalHelper(root.right, postOrderList);
             postOrderList.add(root.val);
         }
+    }
+
+    public static void main(String[] args) {
+        TreeNode treeNode = new TreeNode(6);
+        treeNode.left = new TreeNode(5);
+        treeNode.left.left = new TreeNode(3);
+        treeNode.left.right = new TreeNode(4);
+        treeNode.right = new TreeNode(7);
+        treeNode.right.left = new TreeNode(15);
+        treeNode.right.right = new TreeNode(20);
+        System.out.println(postorderTraversalIterative(treeNode));
     }
 }

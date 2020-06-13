@@ -1,7 +1,6 @@
 package com.leetcode.array;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 // https://leetcode.com/problems/find-all-duplicates-in-an-array/
 public class FindAllDuplicates {
@@ -18,6 +17,20 @@ public class FindAllDuplicates {
             nums[index] = -nums[index];
         }
         return dup;
+    }
+
+
+    public static List<Integer> findDuplicates2(int[] nums) {
+        List<Integer> duplicatesList = new ArrayList<>();
+        Map<Integer, Integer> duplicatesMap = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            duplicatesMap.put(nums[i], duplicatesMap.getOrDefault(nums[i], 0) + 1);
+        }
+        for(Integer key : duplicatesMap.keySet()) {
+            if(duplicatesMap.get(key) > 1)
+                duplicatesList.add(key);
+        }
+        return duplicatesList;
     }
 
     public static void main(String[] args) {

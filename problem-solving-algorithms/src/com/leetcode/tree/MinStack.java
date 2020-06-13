@@ -3,8 +3,13 @@ package com.leetcode.tree;
 import java.util.Stack;
 
 public class MinStack {
-    int min = Integer.MAX_VALUE;
-    Stack<Integer> stack = new Stack();
+    int min;
+    Stack<Integer> stack;
+    /** initialize your data structure here. */
+    public MinStack() {
+        min = Integer.MAX_VALUE;
+        stack = new Stack();
+    }
 
     public void push(int x) {
         if(x <= min) {
@@ -28,10 +33,18 @@ public class MinStack {
     }
 
     public static void main(String[] args) {
-        // Todo
-
-        /** Sample input - Order of events */
-        //["MinStack","push","push","push","getMin","pop","top","getMin"]
-        //[[],[-2],[0],[-3],[],[],[],[]]
+        /**
+            ["MinStack","push","push", "push", "getMin", "pop",  "top", "getMin"]
+            [   [],     [-2],   [0],    [-3],   [],       [],     [],     [] ]
+        */
+        MinStack minStack = new MinStack();
+        minStack.push(-2);
+        minStack.push(0);
+        minStack.push(-3);
+        System.out.println(minStack.getMin()); // return -3
+        minStack.pop();
+        System.out.println(minStack.top());    // return 0
+        System.out.println(minStack.getMin()); // return -2
+        minStack.pop();
     }
 }

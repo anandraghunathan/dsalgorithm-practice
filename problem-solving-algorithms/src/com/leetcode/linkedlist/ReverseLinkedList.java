@@ -1,49 +1,6 @@
 package com.leetcode.linkedlist;
 
 public class ReverseLinkedList {
-
-    // The ListNode class implementation
-    public static class ListNode {
-        private int value;
-        private ListNode next;
-
-        public ListNode(int value) {
-            this.value = value;
-        }
-
-        public ListNode getNext() {
-            return next;
-        }
-
-        public void setNext(ListNode next) {
-            this.next = next;
-        }
-    }
-
-    // Class that adds elements to the LinkedList implementation and print out the
-    public static class ListNodeLinkedList {
-        private ListNode head;
-
-        public void addToFront(int value) {
-            ListNode node = new ListNode(value);
-            node.setNext(head);
-            head = node;
-        }
-    }
-
-    public static void printNode(ListNode head) {
-        ListNode current = head;
-
-        while(current != null) {
-            System.out.print(current.value);
-            System.out.print(" -> ");
-            current = current.getNext();
-        }
-        System.out.print("null ");
-        System.out.print("\n");
-        System.out.print("\n");
-    }
-
     /**
      * Time: O(n)
      * Space: O(1)
@@ -53,18 +10,21 @@ public class ReverseLinkedList {
         // The reversed list node that will be returned finally
         ListNode prev = null;
 
+        // Input -  1 -> 2 -> null
+        // Output - 2 -> 1 -> null
+
         while(head != null) {
             // Obtain the head.next first
-            ListNode next = head.next;
+            ListNode next = head.next;  // #1 next = 2 -> 3 -> null | #2 next = 3 -> null |
 
             // Assign the head's next to prev (that's initially null)
-            head.next = prev;
+            head.next = prev;           // #1 head = 1 -> null | #2 head = 2 -> 1 -> null
 
             // Assign the current head of linked list to the prev node
-            prev = head;
+            prev = head;                // #1 prev = 1 -> null | #2 | 2 -> 1 -> null | #3 |
 
             // Assign the next stored earlier to the head
-            head = next;
+            head = next;                // #1 head = 2 -> 3 -> null | #2 head = 3 -> null |
         }
         return prev;
     }
@@ -96,42 +56,23 @@ public class ReverseLinkedList {
 
     public static void main(String[] args) {
 
-//        /** Iteratively reverse the LinkedList */
-//        ListNodeLinkedList list = new ListNodeLinkedList();
-//        list.addToFront(5);
-//        list.addToFront(4);
-//        list.addToFront(3);
-//        list.addToFront(2);
-//        list.addToFront(1);
-//
-//        // Printing the original input list
-//        System.out.print("Iterative Input = ");
-//        printNode(list.head);
-//
-//        // Reversing the linked list iteratively and printing the output
-//        ListNode iterativelyreversedList = reverseListIteratively(list.head);
-//        System.out.print("Iterative Output = ");
-//        printNode(iterativelyreversedList);
-
-
-
         /** Recursively reverse the LinkedList */
-        ListNodeLinkedList list2 = new ListNodeLinkedList();
-        list2.addToFront(5);
-        list2.addToFront(4);
-        list2.addToFront(3);
-        list2.addToFront(2);
-        list2.addToFront(1);
+        ListNode listNode = new ListNode();
+        listNode.addToFront(5);
+        listNode.addToFront(4);
+        listNode.addToFront(3);
+        listNode.addToFront(2);
+        listNode.addToFront(1);
 
         // Printing the original input list
         System.out.print("Recursive Input = ");
-        printNode(list2.head);
+        ListNode.printNode(listNode.head);
 
         // Reversing the linked list recursively and printing the output
-        ListNode iterativelyreversedList = reverseListIteratively(list2.head);
+        ListNode iterativelyreversedList = reverseListIteratively(listNode.head);
         //ListNode recursivelyreversedList = reverseListRecursively(list2.head);
         System.out.print("Recursive Output = ");
-        printNode(iterativelyreversedList);
+        ListNode.printNode(iterativelyreversedList);
         //printNode(recursivelyreversedList);
 
     }

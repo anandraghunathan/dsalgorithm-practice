@@ -18,10 +18,23 @@ public class MoveZeroes {
         return nums;
     }
 
+    public static int[] moveZeroes2(int[] nums) {
+        int count = 0;
+        for(int i = 0; i < nums.length; i++) {
+            if(nums[i] != 0) {
+                nums[count++] = nums[i];
+            }
+        }
+        while(count < nums.length) {
+            nums[count++] = 0;
+        }
+        return nums;
+    }
+
     public static void main(String[] args) {
         int[] arr = new int[] {0,0,1,3,0,1};
         for (int num: moveZeroes(arr)) {
-            System.out.println(num);
+            System.out.print(num + " ");
         }
     }
 }
